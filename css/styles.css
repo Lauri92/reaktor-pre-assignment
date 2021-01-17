@@ -1,0 +1,44 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #a5acab;
+}
+
+main {
+    min-height: 1000px;
+    padding: 2rem;
+}
+
+.loading-div {
+    display: none;
+}
+
+#chosen-category {
+    display: none;
+    text-transform: capitalize;
+}
+
+.button {
+    display: none;
+}
+
+.container .item-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    text-transform: capitalize;
+}
+
+.container .manufacturer-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.container .item {
+    border: 3px solid #000000;
+    padding: 5px 5px 5px 5px;
+    width: 175px;
+    height: 75px;
+}
+
+
