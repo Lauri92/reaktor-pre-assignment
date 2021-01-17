@@ -4,8 +4,8 @@ const itemContainer = document.querySelector('#item-container');
 const chosenCategory = document.querySelector('#chosen-category');
 
 // URL
-const allproductsUrl = 'https://tranquil-falls-40857.herokuapp.com/products/allproducts';
-const productCategory = 'https://tranquil-falls-40857.herokuapp.com/products/specific/';
+const allproductsUrl = 'http://localhost:3001/products/allproducts';
+const productCategory = 'http://localhost:3001/products/specific/';
 
 // Buttons
 const glovesButton = document.querySelector('#gloves-button');
