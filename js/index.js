@@ -15,6 +15,7 @@ facemasksButton.param = 'facemasks';
 const beaniesButton = document.querySelector('#beanies-button');
 beaniesButton.param = 'beanies';
 
+// Get information of a category of items
 const showProduct = async (e) => {
   itemContainer.innerHTML = '';
 
@@ -85,6 +86,9 @@ const checkCache = async () => {
     chosenCategory.style.display = 'block';
   } else if (cacheResponse.loadStatus === 'still loading') {
     document.querySelector('#loading-div').textContent = 'Still loading'
+    // Refresh until there is value
+    setTimeout(checkCache, 2000);
+  } else {
     // Refresh until there is value
     setTimeout(checkCache, 2000);
   }

@@ -7,6 +7,7 @@ const axios = require('axios');
 const NodeCache = require('node-cache');
 const itemCache = new NodeCache();
 
+// For tracking if cache update is in progress
 let isLoading = false;
 
 // Function is ran when user reloads page. Also called frequently in backend to see if cache needs updating
@@ -36,7 +37,7 @@ const get_all_product_info = async (req, res) => {
     const facemasksData = facemasks.data;
     const beaniesData = beanies.data;
 
-    // Create an array to contain all data for a manufacturer
+    // Create an array to contain all products
     const allProducts = [];
     allProducts.push(glovesData, facemasksData, beaniesData);
 
@@ -68,10 +69,10 @@ const get_all_product_info = async (req, res) => {
         {key: 'facemasksKey', val: facemasks, ttl: 20 * 60},
         {key: 'beaniesKey', val: beanies, ttl: 20 * 60},
       ]);
-      console.log('objects set hopefully');
+      console.log('objects set');
 
       if (req !== undefined) {
-        // Function was called by HTTP request so send a status message of loading
+        // Function was called by HTTP request so send a status message of cache
         res.json({loadStatus: 'ready'});
       }
 
@@ -80,7 +81,7 @@ const get_all_product_info = async (req, res) => {
     });
   } else if (isLoading === true) {
     if (req !== undefined) {
-      // Function was called by HTTP request so send a status message of loading
+      // Function was called by HTTP request so send a status message of cache
       // loading hasn't finished yet
       res.json({loadStatus: 'still loading'});
     }
@@ -134,7 +135,7 @@ const getAvailabilitiesByManufacturer = async (manufacturer, allProducts) => {
       let availability = availabilities.find(
           item => item.id.toLowerCase() === product.id.toLowerCase());
 
-      // Array contains id's which are not reference to any item
+      // Availabilities also contains ids which are not reference to any item
       if (availability !== undefined) {
         // Regex to extrat the stock value
         const status = availability.DATAPAYLOAD.match(
@@ -189,6 +190,7 @@ const get_product_category = async (req, res) => {
   }
 }
 
+// How often the cache is checked if it has up to date info
 setInterval(get_all_product_info, 2 * 60 * 1000);
 
 module.exports = {
