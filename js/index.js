@@ -4,10 +4,10 @@ const itemContainer = document.querySelector('#item-container');
 const chosenCategory = document.querySelector('#chosen-category');
 
 // URL
-//const allproductsUrl = 'https://tranquil-falls-40857.herokuapp.com/products/allproducts';
-const allproductsUrl = 'http://localhost:5000/products/allproducts';
-//const productCategory = 'https://tranquil-falls-40857.herokuapp.com/products/specific/';
-const productCategory = 'http://localhost:5000/products/specific/';
+const allproductsUrl = 'https://tranquil-falls-40857.herokuapp.com/products/allproducts';
+//const allproductsUrl = 'http://localhost:5000/products/allproducts';
+const productCategory = 'https://tranquil-falls-40857.herokuapp.com/products/specific/';
+//const productCategory = 'http://localhost:5000/products/specific/';
 
 // Buttons
 const glovesButton = document.querySelector('#gloves-button');
