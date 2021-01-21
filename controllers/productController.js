@@ -177,18 +177,8 @@ const getAvailabilitiesByManufacturer = async (manufacturer, allProducts) => {
 const get_product_category = async (req, res) => {
   const category = req.params.category;
   const product = itemCache.get(category + 'Key');
-  switch (category) {
-    case 'gloves' :
-      res.json(product);
-      break;
-    case 'facemasks' :
-      res.json(product);
-      break;
-    case 'beanies':
-      res.json(product);
-      break;
-  }
-}
+  res.json(product);
+};
 
 // How often the cache is checked if it has up to date info
 setInterval(get_all_product_info, 2 * 60 * 1000);
