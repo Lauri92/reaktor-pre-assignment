@@ -33,19 +33,32 @@ const showProduct = async (e) => {
     // Check which button was pressed
     switch (category) {
       case 'gloves':
-        allOfCategory = await fetch(productCategory + 'gloves');
-        categoryResponse = await allOfCategory.json();
-        console.log(categoryResponse);
+        try {
+          allOfCategory = await fetch(productCategory + 'gloves');
+          categoryResponse = await allOfCategory.json();
+          console.log(categoryResponse);
+        } catch (e) {
+          console.error(e);
+        }
         break;
       case 'facemasks':
-        allOfCategory = await fetch(productCategory + 'facemasks');
-        categoryResponse = await allOfCategory.json();
-        console.log(categoryResponse);
+        try {
+          allOfCategory = await fetch(productCategory + 'facemasks');
+          categoryResponse = await allOfCategory.json();
+          console.log(categoryResponse);
+        } catch (e) {
+          console.error(e);
+        }
         break;
       case 'beanies':
-        allOfCategory = await fetch(productCategory + 'beanies');
-        categoryResponse = await allOfCategory.json();
-        console.log(categoryResponse);
+        try {
+          allOfCategory = await fetch(productCategory + 'beanies');
+          categoryResponse = await allOfCategory.json();
+          console.log(categoryResponse);
+        } catch (e) {
+          console.error(e);
+        }
+        break;
     }
 
     // Create a container for manufacturer
@@ -96,7 +109,7 @@ const checkCache = async () => {
       beaniesButton.style.display = 'inline-block';
       chosenCategory.style.display = 'block';
     } else if (cacheResponse.loadStatus === 'still loading') {
-      document.querySelector('#loading-div').textContent = 'Still loading'
+      document.querySelector('#loading-div').textContent = 'Still loading';
       // Refresh until there is value
       setTimeout(checkCache, 2000);
     } else {
